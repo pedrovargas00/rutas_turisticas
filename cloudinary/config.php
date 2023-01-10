@@ -1,7 +1,8 @@
 <?php
 include("../vendor/autoload.php");
 use Cloudinary\Configuration\Configuration;
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+
+$dotenv = Dotenv\Dotenv::createImmutable('../');
 $dotenv->load();
 
 $config = Configuration::instance();

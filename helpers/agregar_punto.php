@@ -16,8 +16,7 @@ $nombre_punto_upper = mb_strtoupper($nombre_punto);
 
 $res = mysqli_query($conn, "SELECT id_punto FROM punto WHERE id_ruta = '$id_ruta' AND nombre_punto = '$nombre_punto_upper';")
   or die (mysqli_error($conn));
-// print_r($res);
-// echo " ----- ".mysqli_num_rows($res);
+
 if (mysqli_num_rows($res) != 0){
   $_SESSION['punto_existe'] = false;
   return header("Location: ../public/usuario/crear_punto.php");

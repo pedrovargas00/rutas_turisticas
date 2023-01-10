@@ -6,10 +6,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-// require 'path/to/PHPMailer/src/Exception.php';
-// require 'path/to/PHPMailer/src/PHPMailer.php';
-// require 'path/to/PHPMailer/src/SMTP.php';
-
 $correo = $_REQUEST['correo'];
 
 $result = mysqli_query($conn, "SELECT contrasenia, usuario FROM usuario WHERE correo = '$correo'")
@@ -24,26 +20,27 @@ $contrasena = $row['contrasenia'];
 $usuario = $row['usuario'];
 
 $mail = new PHPMailer(true);
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable('../');
 $dotenv->load();
+
 try {
    $mail->setLanguage('es');
    $mail->CharSet = 'UTF-8';
    //Server settings
    $mail->SMTPDebug = 2;                                       //Enable verbose debug output
    $mail->isSMTP();                                            //Send using SMTP
-   $mail->Host       = 'smtp.gmail.com;smtp-mail.outlook.com'; //Set the SMTP server to send through
+   $mail->Host       = 'smtp-mail.outlook.com; smtp.gmail.com;'; //Set the SMTP server to send through
    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-   $mail->Username   = 'pedro.va0101@gmail.com';                 //SMTP username
+   $mail->Username   = $_ENV['RECOVERY_USERNAME'];             //SMTP username
    $mail->Password   = $_ENV['PASSWORD'];                      //SMTP password
-   $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+   $mail->SMTPSecure = 'tls';                                  //Enable implicit TLS encryption
    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
    //Recipients
-   $mail->setFrom('pedro.va0101@gmail.com', 'Sistemas');
+   $mail->setFrom($_ENV['RECOVERY_USERNAME'], 'Sistemas');
    $mail->addAddress($correo, $usuario);                    //Add a recipient
    // $mail->addAddress('ellen@example.com');               //Name is optional
-   $mail->addReplyTo('piterv4650@gmail.com', 'Sistemas');
+   $mail->addReplyTo($_ENV['REPLY_EMAIL'], 'Sistemas');
    // $mail->addCC('cc@example.com');
    // $mail->addBCC('bcc@example.com');
 

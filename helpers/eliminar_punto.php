@@ -15,6 +15,7 @@ $res = (new AdminApi())->deleteFolder($id_ruta."/".$id_punto);
 
 $result2 = mysqli_query($conn, "DELETE FROM punto WHERE id_punto = '$id_punto'")
 	or die (mysqli_error($conn));
+	
 $_SESSION['punto_eliminado'] = true;
 header("Location: ../public/usuario/editar_punto.php?resultado=$ids");
 ?>
