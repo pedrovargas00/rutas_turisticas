@@ -23,7 +23,7 @@
 					<div class="gtco-widget">
 						<h3>Contacto</h3>
 						<ul class="gtco-quick-contact">
-							<li><a href="#"><i class="icon-phone"></i> +1 111 111 111</a></li>
+							<li><a href="#"><i class="icon-phone"></i> +1 234 567 890</a></li>
 							<li><a href="#"><i class="icon-mail2"></i> info@freehtml5.co</a></li>
 							<li><a href="#"><i class="icon-chat"></i> Live Chat</a></li>
 						</ul>
