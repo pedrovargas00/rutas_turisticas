@@ -20,17 +20,17 @@
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
 						<li><a href="index.php" class="current">Inicio</a></li>
-						<li><a href="login.php">Iniciar Sesión</a></li>
-						<li><a href="registro.php">Registro</a></li>
-						<li><a href="resultados.php">Consultar Rutas</a></li>
-						<li><a href="contacto.php">Contacto</a></li>
+						<li><a href="public/login.php">Iniciar Sesión</a></li>
+						<li><a href="public/registro.php">Registro</a></li>
+						<li><a href="public/resultados.php">Consultar Rutas</a></li>
+						<li><a href="public/contacto.php">Contacto</a></li>
 					</ul>	
 				</div>
 			</div>
 		</div>
 	</nav>
 	
-	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(images/img_bg_2.jpg)">
+	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(public/images/img_bg_2.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row">
@@ -45,7 +45,7 @@
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
 											<h3>Buscar ruta turística</h3>
-											<form action="resultados.php" method="POST">
+											<form action="public/resultados.php" method="POST">
 												<div class="row form-group">
 													<div class="col-md-20">
 														<input type="text" name="buscar"
@@ -77,7 +77,7 @@
 					<h2>Rutas Ingresadas</h2>
 					<p>Estas son algunas rutas registradas por los usuarios.</p>
 					<?php 
-					include("../db/database.php");
+					include("db/databaseRoot.php");
 
 					$result = mysqli_query($conn, "SELECT * FROM ruta LIMIT 3")
 						or die (mysqli_error($conn));
@@ -198,7 +198,7 @@
 					<p>Estas son algunas cifras que se han logrado en esta página</p>
 				</div>
 			</div>
-			<?php include("../db/database.php");
+			<?php include("db/databaseRoot.php");
 			
 			$r1 = mysqli_query($conn, "SELECT id_ruta FROM ruta")
 				or die (mysqli_error($conn));

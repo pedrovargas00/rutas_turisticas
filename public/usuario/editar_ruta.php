@@ -48,7 +48,7 @@
 						unset($_SESSION['ruta_editar_existe']);
 					} ?>
 					<?php
-					include("../../db/database.php");
+					include("../../db/databaseDeep.php");
 					
 					$id = $_GET['resultado'];
 					$id_usuario = $_SESSION['id_cliente'];
@@ -123,7 +123,7 @@
 							</div>
 						</div>
 						<?php
-						include("../../db/database.php");
+						include("../../db/databaseDeep.php");
 						
 						$ids_puntos = array();
 						$n = 0;

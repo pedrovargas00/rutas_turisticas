@@ -2,6 +2,9 @@
 include("sesion.php");
 include("../db/database.php");
 
+use Encryption\Encryption;
+use Encryption\Exception\EncryptionException;
+
 $id_usuario = $_REQUEST['id_usuario'];
 $nombre = $_REQUEST['nombre'];
 $usuario = $_REQUEST['usuario'];
@@ -17,8 +20,16 @@ if (mysqli_num_rows($res) != 0){
    return header("Location: ../public/usuario/crear_ruta.php?resultado=<?php echo $id_usuario; ?>");
 }
 
+try {
+   $encryption = Encryption::getEncryptionObject();
+   $pw = $encryption->encrypt($password, $_ENV['ENCRYPT_KEY'], base64_decode($_ENV['ENCRYPT_IV']));
+}
+catch (EncryptionException $e) {
+    echo $e;
+}
+
 $result = mysqli_query($conn, "UPDATE usuario SET nombre='$nombre', usuario='$usuario', correo='$correo', 
-   contrasenia='$password', tipo_usuario='$tipo_usuario' WHERE id_usuario = '$id_usuario';")
+   contrasenia='$pw', tipo_usuario='$tipo_usuario' WHERE id_usuario = '$id_usuario';")
    or die (mysqli_error($conn));
 
 header("Location: ../public/admin/indexAdmin.php"); 

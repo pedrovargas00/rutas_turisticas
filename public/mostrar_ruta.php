@@ -11,11 +11,11 @@
 			
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo"><a href="index.php">Traveler <em>.</em></a></div>
+					<div id="gtco-logo"><a href="../index.php">Traveler <em>.</em></a></div>
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li><a href="index.php">Inicio</a></li>
+						<li><a href="../index.php">Inicio</a></li>
 						<li><a href="login.php">Iniciar Sesión</a></li>
 						<li><a href="registro.php">Registro</a></li>
 						<li><a href="resultados.php">Consultar Rutas</a></li>

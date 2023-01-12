@@ -34,7 +34,7 @@
 	</header>
 	<?php
 	//include("../helpers/sesion.php");
-	include("../../db/database.php");
+	include("../../db/databaseDeep.php");
 	include("../../helpers/sesion.php");
 
 	$id = $_GET['resultado'];

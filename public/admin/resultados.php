@@ -43,7 +43,7 @@
 			</div>
 			<div class="row">
 				<?php
-				include("../../db/database.php");
+				include("../../db/databaseDeep.php");
 
 				$busqueda = $_REQUEST['buscar'];
 				

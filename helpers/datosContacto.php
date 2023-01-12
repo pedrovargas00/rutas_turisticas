@@ -10,7 +10,7 @@ $asunto = $_REQUEST['asunto'];
 $mensaje = $_REQUEST['mensaje'];
 
 $mail = new PHPMailer(true);
-$dotenv = Dotenv\Dotenv::createImmutable('../');
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__FILE__, 2));
 $dotenv->load();
 try {
    $mail->setLanguage('es');
@@ -18,11 +18,11 @@ try {
    //Server settings
    $mail->SMTPDebug = 2;                                       //Enable verbose debug output
    $mail->isSMTP();                                            //Send using SMTP
-   $mail->Host       = 'smtp-mail.outlook.com; smtp.gmail.com;'; //Set the SMTP server to send through
+   $mail->Host       = 'smtp-mail.outlook.com;smtp.gmail.com;'; //Set the SMTP server to send through
    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
    $mail->Username   = $_ENV['RECOVERY_USERNAME'];             //SMTP username
    $mail->Password   = $_ENV['PASSWORD'];                      //SMTP password
-   $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+   $mail->SMTPSecure = 'tls';                                  //Enable implicit TLS encryption
    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
    //Recipients
@@ -46,7 +46,7 @@ try {
 
    $mail->send();
    $_SESSION['correo_existe'] = true;
-   header("Location: ../public/index.php");
+   header("Location: ../index.php");
    //echo 'Message has been sent';
 } catch (Exception $e) {
    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

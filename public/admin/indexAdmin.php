@@ -82,7 +82,7 @@
 					<h2>Rutas Ingresadas</h2>
 					<p>Estas son algunas rutas registradas por los usuarios.</p>
 					<?php 
-					include("../../db/database.php");
+					include("../../db/databaseDeep.php");
 
 					$result = mysqli_query($conn, "SELECT * FROM ruta LIMIT 3")
 						or die (mysqli_error($conn));
@@ -203,7 +203,7 @@
 					<p>Estas son algunas cifras que se han logrado en esta página</p>
 				</div>
 			</div>
-			<?php include("../../db/database.php");
+			<?php include("../../db/databaseDeep.php");
 			
 			$r1 = mysqli_query($conn, "SELECT id_ruta FROM ruta")
 				or die (mysqli_error($conn));

@@ -55,7 +55,7 @@
 						unset($_SESSION['punto_eliminado']);
 					} ?>
 					<?php
-					include("../../db/database.php");
+					include("../../db/databaseDeep.php");
 					
 					// $datos = unserialize($_REQUEST['ids']);
 					// print_r($datos);
